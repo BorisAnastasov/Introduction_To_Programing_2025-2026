@@ -1,0 +1,28 @@
+# Build folders
+build/
+bin/
+obj/
+Debug/
+Release/
+
+# Compiled binaries
+*.exe
+*.out
+*.dll
+*.so
+*.dylib
+*.o
+*.obj
+
+# VS Code settings
+.vscode/
+
+# Logs, temp, backups
+*.log
+*.tmp
+*.bak
+*~
+
+# OS junk
+.DS_Store
+Thumbs.db
