@@ -1,11 +1,14 @@
-# Build folders
+# --- Build folders ---
 build/
 bin/
 obj/
 Debug/
 Release/
+x64/
+x86/
+out/
 
-# Compiled binaries
+# --- Compiled binaries ---
 *.exe
 *.out
 *.dll
@@ -13,16 +16,50 @@ Release/
 *.dylib
 *.o
 *.obj
+*.lib
+*.pdb
+*.idb
 
-# VS Code settings
+# --- Visual Studio specific ---
+.vs/
+*.VC.db
+*.VC.opendb
+*.user
+*.suo
+*.cache
+*.ipch
+*.dbmdl
+*.opendb
+*.log
+
+# --- VS Code settings ---
 .vscode/
 
-# Logs, temp, backups
+# --- Backup, temp, and logs ---
 *.log
 *.tmp
 *.bak
 *~
+*.swp
 
-# OS junk
+# --- OS junk ---
 .DS_Store
 Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# --- CMake ---
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# --- Other IDEs / metadata ---
+.idea/
+*.iml
+*.tlog
+*.lastbuildstate
+
+# --- GitHub Copilot / semantic indexes ---
+.vs/GitHub/
