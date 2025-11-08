@@ -22,6 +22,10 @@ out/
 
 # --- Visual Studio specific ---
 .vs/
+*.vcxproj*
+*.vcxproj.user
+*.sln
+*.suo
 *.VC.db
 *.VC.opendb
 *.user
