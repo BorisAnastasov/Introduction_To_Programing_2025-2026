@@ -30,6 +30,22 @@ bool containsChar(const char* str, char ch) {
 	return false;
 }
 
+bool isLetter(char ch) {
+	return 'a' <= ch && ch <= 'Z';
+}
+
+bool caseInsensitive(char a, char b) {
+	if (a > b) {
+		return a - 'a' == b - 'A';
+	}
+	else if (a < b) {
+		return b - 'a' == a - 'A';
+	}
+	else {
+		return a == b;
+	}
+}
+
 #pragma endregion
 
 //1
@@ -225,14 +241,90 @@ int findFirstOccurrence(const char* text, const char* word) {
 	return -1;
 }
 
+//9
+int containsString(const char* str, const char* word) {
+	if (!str || !word) return 0;
+
+	int lenStr = getLength(str);
+	if (lenStr == 0) return 0;
+	int lenWord = getLength(word);
+	if (lenWord == 0) return 0;
+
+	if (lenStr < lenWord) return 0;
+
+	int counter = 0;
+	bool success = true;
+	for (int i = 0; i < lenStr; i++)
+	{
+		if (str[i] == word[0]) {
+			if (lenStr - i + 1 < lenWord) return 0;
+			for (int j = 0; j < lenWord ; j++)
+			{
+				if (str[i + j] != word[j]) {
+					success = false;
+					break;
+				}
+			}
+			if (success) {
+				counter++;
+				success = true;
+			}
+
+		}
+	}
+	return counter;	
+}
+
+//10
+char* replaceStrings(const char* text, const char* substring) {
+	if (!text) return nullptr;
+
+	int lenText = getLength(text);
+	int lenSub = getLength(substring);
+	if (lenText == 0) return nullptr;
+	if (lenSub == 0) return nullptr;
+	if (lenText < lenSub) return nullptr;
+
+	char* result = new char[lenText + 1];
+
+	for (int i = 0; i < lenText; i++)
+	{
+		result[i] = text[i];
+	}
+	result[lenText] = '\0';
+
+	for (int i = 0; i < lenText; i++)
+	{
+		if (caseInsensitive(text[i], substring[0])) {
+			if (lenText - i + 1 < lenSub) break;
+			bool success = true;
+			for (int j = 0; j < lenSub; j++)
+			{
+				if (!caseInsensitive(text[i + j], substring[j])) {
+					success = false;
+					break;
+				}
+			}
+			if (success) {
+				for (int j = 0; j < lenSub; j++)
+				{
+					result[i + j] = '*';
+				}
+			}
+		}
+	}
+	return result;
+}
 
 int main()
 {
-	char* arr = removeDuplicates("cbacdcbc");
+	char* arr = replaceStrings("Howdy! How are you? How was your day?","how");
 
-	int result = findFirstOccurrence("Hello my friend!", "my");
+	//int result = findFirstOccurrence("Hello my friend!", "my");
 
-	cout << result << endl;
+	//int b = containsString("abcdabcabababc", "abc");
 
-	delete[] arr;
+	cout << arr << endl;
+
+	//delete[] arr;
 }
